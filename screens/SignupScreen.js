@@ -70,7 +70,7 @@ function SignupScreen({navigation}) {
         secureTextEntry={true}
       />
 
-      <FormButton buttonTitle="Sign Up" onPress={() => signup()} />
+      <FormButton buttonTitle="Đăng ký" onPress={() => signup()} />
 
       <View style={styles.textPrivate}>
         <Text style={styles.color_textPrivate}>

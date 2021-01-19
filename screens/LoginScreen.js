@@ -19,64 +19,63 @@ import auth from '@react-native-firebase/auth';
 function LoginScreen({navigation}){
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  // function login(){
-  // auth()
-  // .signInWithEmailAndPassword(email,password)
-  // .then(() => {
-  //   console.log('User account created & signed in!');
-  // })
-  // .catch(error => {
-  //   if (error.code === 'auth/email-already-in-use') {
-  //     console.log('That email address is already in use!');
-  //   }
-
-  //   if (error.code === 'auth/invalid-email') {
-  //     console.log('That email address is invalid!');
-  //   }
-
-  //   console.error(error);
-  // });
-  // }
-  // const {user} = useContext(AuthContext);
-  async function onFacebookButtonPress() {
-    // Attempt login with permissions
-    const result = await LoginManager.logInWithPermissions(['public_profile', 'email']);
-  
-    if (result.isCancelled) {
-      throw 'User cancelled the login process';
+  function login(){
+  auth()
+  .signInWithEmailAndPassword(email,password)
+  .then(() => {
+    console.log('User account created & signed in!');
+  })
+  .catch(error => {
+    if (error.code === 'auth/email-already-in-use') {
+      console.log('That email address is already in use!');
     }
-  
-    // Once signed in, get the users AccesToken
-    const data = await AccessToken.getCurrentAccessToken();
-  
-    if (!data) {
-      throw 'Something went wrong obtaining access token';
+
+    if (error.code === 'auth/invalid-email') {
+      console.log('That email address is invalid!');
     }
-  
-    // Create a Firebase credential with the AccessToken
-    const facebookCredential = auth.FacebookAuthProvider.credential(data.accessToken);
-  
-    // Sign-in the user with the credential
-    return auth().signInWithCredential(facebookCredential);
+    console.error(error);
+  });
   }
+  // const {user} = useContext(AuthContext);
+  // async function onFacebookButtonPress() {
+  //   // Attempt login with permissions
+  //   const result = await LoginManager.logInWithPermissions(['public_profile', 'email']);
   
-  signIn = async () => {
-    try {
-      await GoogleSignin.hasPlayServices();
-      const userInfo = await GoogleSignin.signIn();
-      this.setState({ userInfo });
-    } catch (error) {
-      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-        // user cancelled the login flow
-      } else if (error.code === statusCodes.IN_PROGRESS) {
-        // operation (e.g. sign in) is in progress already
-      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-        // play services not available or outdated
-      } else {
-        // some other error happened
-      }
-    }
-  };
+  //   if (result.isCancelled) {
+  //     throw 'User cancelled the login process';
+  //   }
+  
+  //   // Once signed in, get the users AccesToken
+  //   const data = await AccessToken.getCurrentAccessToken();
+  
+  //   if (!data) {
+  //     throw 'Something went wrong obtaining access token';
+  //   }
+  
+  //   // Create a Firebase credential with the AccessToken
+  //   const facebookCredential = auth.FacebookAuthProvider.credential(data.accessToken);
+  
+  //   // Sign-in the user with the credential
+  //   return auth().signInWithCredential(facebookCredential);
+  // }
+  
+  // signIn = async () => {
+  //   try {
+  //     await GoogleSignin.hasPlayServices();
+  //     const userInfo = await GoogleSignin.signIn();
+  //     this.setState({ userInfo });
+  //   } catch (error) {
+  //     if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+  //       // user cancelled the login flow
+  //     } else if (error.code === statusCodes.IN_PROGRESS) {
+  //       // operation (e.g. sign in) is in progress already
+  //     } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+  //       // play services not available or outdated
+  //     } else {
+  //       // some other error happened
+  //     }
+  //   }
+  // };
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Image source={require('../assets/piggy-bank.png')} style={styles.logo} />
@@ -106,7 +105,7 @@ function LoginScreen({navigation}){
       />
 
       <TouchableOpacity style={styles.forgotButton} onPress={() => {}}>
-        <Text style={styles.navButtonText}>Forgot Password?</Text>
+        <Text style={styles.navButtonText}>Quên mật khẩu?</Text>
       </TouchableOpacity>
 
       {Platform.OS === 'android' ? (
