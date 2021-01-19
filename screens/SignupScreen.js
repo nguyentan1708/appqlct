@@ -42,12 +42,12 @@ function SignupScreen({navigation}) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Create an account</Text>
+      <Text style={styles.text}>Tạo tài khoản mới</Text>
 
       <FormInput
         labelValue={email}
         onChangeText={(userEmail) => setEmail(userEmail)}
-        placeholderText="Email"
+        placeholderText="Nhập email"
         iconType="person-outline"
         keyboardType="email-address"
         autoCapitalize="none"
@@ -57,7 +57,7 @@ function SignupScreen({navigation}) {
       <FormInput
         labelValue={password}
         onChangeText={(userPassword) => setPassword(userPassword)}
-        placeholderText="Password"
+        placeholderText="Nhập mật khẩu"
         iconType="lock-closed-outline"
         secureTextEntry={true}
       />
@@ -65,7 +65,7 @@ function SignupScreen({navigation}) {
       <FormInput
         labelValue={confirmPassword}
         onChangeText={(userPassword) => setConfirmPassword(userPassword)}
-        placeholderText="Confirm Password"
+        placeholderText="Xác nhận mật khẩu"
         iconType="lock-closed-outline"
         secureTextEntry={true}
       />
@@ -90,7 +90,7 @@ function SignupScreen({navigation}) {
       {Platform.OS === 'android' ? (
         <View>
           <SocialButton
-            buttonTitle="Sign Up with Facebook"
+            buttonTitle="Đăng ký với Facebook"
             btnType="facebook"
             color="#4867aa"
             backgroundColor="#e6eaf4"
@@ -98,7 +98,7 @@ function SignupScreen({navigation}) {
           />
 
           <SocialButton
-            buttonTitle="Sign Up with Google"
+            buttonTitle="Đăng ký với Google"
             btnType="google"
             color="#de4d41"
             backgroundColor="#f5e7ea"
@@ -110,7 +110,7 @@ function SignupScreen({navigation}) {
       <TouchableOpacity
         style={styles.navButton}
         onPress={() => navigation.navigate('Login')}>
-        <Text style={styles.navButtonText}>Have an account? Sign In</Text>
+        <Text style={styles.navButtonText}>Đã có tài khoản? Đăng nhập</Text>
       </TouchableOpacity>
     </View>
   );

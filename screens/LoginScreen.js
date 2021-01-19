@@ -16,49 +16,49 @@ import auth from '@react-native-firebase/auth';
 // import {AuthContext} from '../navigation/AuthProvider';
 // import { LoginManager, AccessToken } from 'react-native-fbsdk';
 
-function LoginScreen({navigation}){
+function LoginScreen({navigation}) {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  function login(){
-  auth()
-  .signInWithEmailAndPassword(email,password)
-  .then(() => {
-    console.log('User account created & signed in!');
-  })
-  .catch(error => {
-    if (error.code === 'auth/email-already-in-use') {
-      console.log('That email address is already in use!');
-    }
+  function login() {
+    auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(() => {
+        console.log('User account created & signed in!');
+      })
+      .catch((error) => {
+        if (error.code === 'auth/email-already-in-use') {
+          console.log('That email address is already in use!');
+        }
 
-    if (error.code === 'auth/invalid-email') {
-      console.log('That email address is invalid!');
-    }
-    console.error(error);
-  });
+        if (error.code === 'auth/invalid-email') {
+          console.log('That email address is invalid!');
+        }
+        console.error(error);
+      });
   }
   // const {user} = useContext(AuthContext);
   // async function onFacebookButtonPress() {
   //   // Attempt login with permissions
   //   const result = await LoginManager.logInWithPermissions(['public_profile', 'email']);
-  
+
   //   if (result.isCancelled) {
   //     throw 'User cancelled the login process';
   //   }
-  
+
   //   // Once signed in, get the users AccesToken
   //   const data = await AccessToken.getCurrentAccessToken();
-  
+
   //   if (!data) {
   //     throw 'Something went wrong obtaining access token';
   //   }
-  
+
   //   // Create a Firebase credential with the AccessToken
   //   const facebookCredential = auth.FacebookAuthProvider.credential(data.accessToken);
-  
+
   //   // Sign-in the user with the credential
   //   return auth().signInWithCredential(facebookCredential);
   // }
-  
+
   // signIn = async () => {
   //   try {
   //     await GoogleSignin.hasPlayServices();
@@ -84,7 +84,7 @@ function LoginScreen({navigation}){
       <FormInput
         labelValue={email}
         onChangeText={(userEmail) => setEmail(userEmail)}
-        placeholderText="Email"
+        placeholderText="Nhập email"
         iconType="person-outline"
         keyboardType="email-address"
         autoCapitalize="none"
@@ -94,7 +94,7 @@ function LoginScreen({navigation}){
       <FormInput
         labelValue={password}
         onChangeText={(userPassword) => setPassword(userPassword)}
-        placeholderText="Password"
+        placeholderText="Nhập mật khẩu"
         iconType="lock-closed-outline"
         secureTextEntry={true}
       />
@@ -111,15 +111,15 @@ function LoginScreen({navigation}){
       {Platform.OS === 'android' ? (
         <View>
           <SocialButton
-            buttonTitle="Sign In with Facebook"
+            buttonTitle="Đăng nhập với Facebook"
             btnType="facebook"
             color="#4867aa"
             backgroundColor="#e6eaf4"
-            onPress={() => onFacebookButtonPress().then(() => console.log('Signed in with Google!'))}
+            onPress={() =>{}}
           />
 
           <SocialButton
-            buttonTitle="Sign In with Google"
+            buttonTitle="Đăng nhập với Google"
             btnType="google"
             color="#de4d41"
             backgroundColor="#f5e7ea"
@@ -130,15 +130,14 @@ function LoginScreen({navigation}){
 
       <TouchableOpacity
         style={styles.forgotButton}
-        onPress={() => navigation.navigate('Signup')}
-      >
+        onPress={() => navigation.navigate('Signup')}>
         <Text style={styles.navButtonText}>
           Chưa có tài khoản? Đăng ký ngay!
         </Text>
       </TouchableOpacity>
     </ScrollView>
   );
-};
+}
 
 export default LoginScreen;
 
