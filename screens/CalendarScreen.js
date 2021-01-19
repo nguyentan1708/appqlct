@@ -1,4 +1,3 @@
-import {Button, Text, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import React, {Component, useState} from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
