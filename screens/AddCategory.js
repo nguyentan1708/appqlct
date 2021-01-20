@@ -311,42 +311,42 @@ export default function AddCategory({navigation}) {
   //     />
   //   );
   // };
-  function pushData({name,icon,color}) {
-    database().ref('/category').push().set({
-      name:name,
-      icon:icon,
-      color:color
-    }).then((result)=>alert(
-      'Alert Title',
-      'My Alert Msg',
-      [
-        {
-          text: 'Ask me later',
-          onPress: () => console.log('Ask me later pressed')
-        },
-        {
-          text: 'Cancel',
-          onPress: () => console.log('Cancel Pressed'),
-          style: 'cancel'
-        },
-        { text: 'OK', onPress: () => console.log('OK Pressed') }
-      ],
-      { cancelable: false }
-    ))
-  }
-  useEffect(() => {
-    const onValueChange = database()
-      .ref(`/user/${userId}`)
-      .on('value', snapshot => {
-        console.log('User data: ', snapshot.val());
-      });
+  // function pushData({name,icon,color}) {
+  //   database().ref('/category').push().set({
+  //     name:name,
+  //     icon:icon,
+  //     color:color
+  //   }).then((result)=>alert(
+  //     'Alert Title',
+  //     'My Alert Msg',
+  //     [
+  //       {
+  //         text: 'Ask me later',
+  //         onPress: () => console.log('Ask me later pressed')
+  //       },
+  //       {
+  //         text: 'Cancel',
+  //         onPress: () => console.log('Cancel Pressed'),
+  //         style: 'cancel'
+  //       },
+  //       { text: 'OK', onPress: () => console.log('OK Pressed') }
+  //     ],
+  //     { cancelable: false }
+  //   ))
+  // }
+  // useEffect(() => {
+  //   const onValueChange = database()
+  //     .ref(`/user/${userId}`)
+  //     .on('value', snapshot => {
+  //       console.log('User data: ', snapshot.val());
+  //     });
 
-    // Stop listening for updates when no longer required
-    return () =>
-      database()
-        .ref(`/users/${userId}`)
-        .off('value', onValueChange);
-  }, [userId]);
+  //   // Stop listening for updates when no longer required
+  //   return () =>
+  //     database()
+  //       .ref(`/users/${userId}`)
+  //       .off('value', onValueChange);
+  // }, [userId]);
   return (
     <View style={styles.container}>
       <View styte={styles.containerInput}>

@@ -4,6 +4,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import AddCategory from './AddCategory';
 import SpendingScreen from './SpendingScreen';
 import IncomeScreen from './IncomeScreen';
+import SettingScreen from './SettingScreen';
 const Stack = createStackNavigator();
 
 export default function InOutScreen({navigation}) {
@@ -31,6 +32,9 @@ export default function InOutScreen({navigation}) {
       <Stack.Screen 
       name="Income" 
       component={IncomeScreen} />
+      <Stack.Screen
+      name="Setting"
+      component={SettingScreen}/>
     </Stack.Navigator>
   );
 }
