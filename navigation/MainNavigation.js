@@ -6,7 +6,7 @@ import ChartScreen from '../screens/ChartScreen';
 import HomeScreen from '../screens/HomeScreen';
 import CalendarScreen from '../screens/CalendarScreen';
 import SettingScreen from '../screens/SettingScreen';
-
+// import {NavigationContainer} from '@react-navigation/native';
 const Tab = createBottomTabNavigator();
 
 export const MainNavigation = () => (

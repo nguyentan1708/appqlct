@@ -312,30 +312,29 @@ export default function AddCategory({navigation}) {
   //     />
   //   );
   // };
-<<<<<<< HEAD
-  // function pushData({name,icon,color}) {
-  //   database().ref('/category').push().set({
-  //     name:name,
-  //     icon:icon,
-  //     color:color
-  //   }).then((result)=>alert(
-  //     'Alert Title',
-  //     'My Alert Msg',
-  //     [
-  //       {
-  //         text: 'Ask me later',
-  //         onPress: () => console.log('Ask me later pressed')
-  //       },
-  //       {
-  //         text: 'Cancel',
-  //         onPress: () => console.log('Cancel Pressed'),
-  //         style: 'cancel'
-  //       },
-  //       { text: 'OK', onPress: () => console.log('OK Pressed') }
-  //     ],
-  //     { cancelable: false }
-  //   ))
-  // }
+  function pushData({name,icon,color}) {
+    database().ref('/category').push().set({
+      name:name,
+      icon:icon,
+      color:color
+    }).then((result)=>alert(
+      'Alert Title',
+      'My Alert Msg',
+      [
+        {
+          text: 'Ask me later',
+          onPress: () => console.log('Ask me later pressed')
+        },
+        {
+          text: 'Cancel',
+          onPress: () => console.log('Cancel Pressed'),
+          style: 'cancel'
+        },
+        { text: 'OK', onPress: () => console.log('OK Pressed') }
+      ],
+      { cancelable: false }
+    ))
+  }
   // useEffect(() => {
   //   const onValueChange = database()
   //     .ref(`/user/${userId}`)
@@ -349,41 +348,6 @@ export default function AddCategory({navigation}) {
   //       .ref(`/users/${userId}`)
   //       .off('value', onValueChange);
   // }, [userId]);
-=======
-
-  function pushData() {
-    const user = firebase.auth().currentUser;
-    database()
-      .ref(`/user/${user.uid}/category`)
-      .push()
-      .set({
-        name,
-        color,
-        icon,
-      })
-      .then((result) => {
-        console.log(result,"Thành công")
-        alert(
-          'Alert Title',
-          'My Alert Msg',
-          [
-            {
-              text: 'Ask me later',
-              onPress: () => console.log('Ask me later pressed'),
-            },
-            {
-              text: 'Cancel',
-              onPress: () => console.log('Cancel Pressed'),
-              style: 'cancel',
-            },
-            {text: 'OK', onPress: () => console.log('OK Pressed')},
-          ],
-          {cancelable: false},
-        );
-      });
-  }
-
->>>>>>> origin/main
   return (
     <View style={styles.container}>
       <View styte={styles.containerInput}>

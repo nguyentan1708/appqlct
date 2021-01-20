@@ -68,7 +68,7 @@ export default function Spending({navigation}) {
       .then(() => console.log('Data set.'));
   }
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <View contentContainerStyle={styles.container}>
       <View>
         <Button onPress={showDatepicker} title="Show date picker!" />
       </View>
@@ -150,7 +150,7 @@ export default function Spending({navigation}) {
         buttonTitle="Thêm mới danh mục"
         onPress={() => navigation.navigate(AddCategory)}
       />
-    </ScrollView>
+    </View>
   );
 }
 
