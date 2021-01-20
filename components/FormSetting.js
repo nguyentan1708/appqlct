@@ -20,9 +20,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     padding: 10,
     justifyContent: 'center',
-    borderTopWidth:3,
-    borderBottomWidth:3,
-    borderColor:'#DADADA',
+      borderTopWidth:3,
+      borderBottomWidth:3,
+      borderColor:'#DADADA',
   },
   buttonText: {
     fontSize: 18,
