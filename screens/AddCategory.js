@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   Button,
   FlatList,
@@ -16,11 +16,12 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native-gesture-handler';
-// import database from '@react-native-firebase/database';
+import database from '@react-native-firebase/database';
+import {firebase, auth} from '@react-native-firebase/auth';
 
 export default function AddCategory({navigation}) {
-  const [name, setName] = useState();
-  const [icon, setIcon] = useState();
+  const [name, setName] = useState('');
+  const [icon, setIcon] = useState('');
   const [color, setColor] = useState('floralwhite');
   const ICON = [
     {
@@ -311,6 +312,7 @@ export default function AddCategory({navigation}) {
   //     />
   //   );
   // };
+<<<<<<< HEAD
   // function pushData({name,icon,color}) {
   //   database().ref('/category').push().set({
   //     name:name,
@@ -347,6 +349,41 @@ export default function AddCategory({navigation}) {
   //       .ref(`/users/${userId}`)
   //       .off('value', onValueChange);
   // }, [userId]);
+=======
+
+  function pushData() {
+    const user = firebase.auth().currentUser;
+    database()
+      .ref(`/user/${user.uid}/category`)
+      .push()
+      .set({
+        name,
+        color,
+        icon,
+      })
+      .then((result) => {
+        console.log(result,"Thành công")
+        alert(
+          'Alert Title',
+          'My Alert Msg',
+          [
+            {
+              text: 'Ask me later',
+              onPress: () => console.log('Ask me later pressed'),
+            },
+            {
+              text: 'Cancel',
+              onPress: () => console.log('Cancel Pressed'),
+              style: 'cancel',
+            },
+            {text: 'OK', onPress: () => console.log('OK Pressed')},
+          ],
+          {cancelable: false},
+        );
+      });
+  }
+
+>>>>>>> origin/main
   return (
     <View style={styles.container}>
       <View styte={styles.containerInput}>
@@ -355,7 +392,7 @@ export default function AddCategory({navigation}) {
           value={name}
           style={styles.inputField}
           placeholder="Tên danh mục"
-          onChangeText={(name)=>setName(name)}
+          onChangeText={(name) => setName(name)}
           placeholderTextColor="black"
         />
       </View>
@@ -366,16 +403,19 @@ export default function AddCategory({navigation}) {
           numColumns="4"
           keyExtractor={(item) => item.id}
           renderItem={({item}) => (
-          <View style={styles.iconItemWrap}>
-            <ScrollView style={styles.category}>
-              <TouchableOpacity
-              style={styles.icon}
-              onPress={()=>setIcon(item.icon)}
-              >
-                <Ionicons name={item.icon} color={color} style={styles.itemIcon} />
-              </TouchableOpacity>
-            </ScrollView>
-          </View>
+            <View style={styles.iconItemWrap}>
+              <ScrollView style={styles.category}>
+                <TouchableOpacity
+                  style={styles.icon}
+                  onPress={() => {setIcon(item.icon)}}>
+                  <Ionicons
+                    name={item.icon}
+                    color={color}
+                    style={styles.itemIcon}
+                  />
+                </TouchableOpacity>
+              </ScrollView>
+            </View>
           )}
           extraData={icon}
         />
@@ -389,9 +429,7 @@ export default function AddCategory({navigation}) {
           renderItem={({item}) => (
             <View style={styles.categoryItem}>
               <ScrollView style={styles.color}>
-                <TouchableOpacity
-                onPress={()=>setColor(item.color)}
-                >
+                <TouchableOpacity onPress={() => setColor(item.color)}>
                   <View
                     backgroundColor={item.color}
                     style={styles.itemColor}></View>
@@ -403,11 +441,9 @@ export default function AddCategory({navigation}) {
         />
       </View>
       <View style={styles.containerButton}>
-
         <TouchableOpacity
-        style={styles.textButtonWrap}
-        onPress={()=>pushData(name,icon,color)}
-        >
+          style={styles.textButtonWrap}
+          onPress={() => pushData()}>
           <Text style={styles.textButton}>Lưu</Text>
         </TouchableOpacity>
       </View>
@@ -416,31 +452,26 @@ export default function AddCategory({navigation}) {
 }
 const styles = StyleSheet.create({
   container: {
-    flex:1,
-    margin:5,
+    flex: 1,
+    margin: 5,
   },
   containerInput: {
-    flex:2,
-    borderWidth:2,
-    borderColor:'black',
+    flex: 2,
+    borderWidth: 2,
+    borderColor: 'black',
   },
-  textInput: {
-
-  },
-  inputField: {
-
-  },
-  text:{
-  },
+  textInput: {},
+  inputField: {},
+  text: {},
   containerIcon: {
-    flex:4,
-    borderWidth:2,
-    borderColor:'black',
+    flex: 4,
+    borderWidth: 2,
+    borderColor: 'black',
   },
   containerColor: {
-    flex:4,
-    borderWidth:2,
-    borderColor:'black',
+    flex: 4,
+    borderWidth: 2,
+    borderColor: 'black',
   },
   categoryWrapper: {
     margin: 20,
@@ -474,20 +505,20 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 20,
   },
-  iconItemWrap:{
-    flex:1,
+  iconItemWrap: {
+    flex: 1,
   },
-  containerButton:{
-    flex:1,
-    backgroundColor:'lightskyblue',
-    alignItems:'center',
-    alignContent:'center',
-    borderRadius:10,
+  containerButton: {
+    flex: 1,
+    backgroundColor: 'lightskyblue',
+    alignItems: 'center',
+    alignContent: 'center',
+    borderRadius: 10,
   },
-  textButtonWrap:{
-    flex:1,
+  textButtonWrap: {
+    flex: 1,
   },
-  textButton:{
-    fontSize:24,
-  }
+  textButton: {
+    fontSize: 24,
+  },
 });
