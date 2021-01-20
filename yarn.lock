@@ -1172,10 +1172,10 @@
   resolved "https://registry.yarnpkg.com/@react-native-firebase/auth/-/auth-10.4.1.tgz#6653000ea659e8f1a17b59419e84d525b1ea2617"
   integrity sha512-Zle6xJin3u0a0oTrPqmumc7HgANXxJLhKxeJO+KQYp/AdCWU5/JYcxjVuOZjBhr8Vuvs/oVRC/7vt9p+CUasqQ==
 
-"@react-native-firebase/database@^10.4.1":
-  version "10.4.1"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/database/-/database-10.4.1.tgz#ef6bcf28db149b5deda247f3bf7c838bbdc30542"
-  integrity sha512-v2IcNn1eR0y521tKncezfwaEl2RmJuFkO+ke0t/AD3fH8Vr92yRBjYaWin8sZio5mH1dbCy0+TY/4DUVUwVtXg==
+"@react-native-firebase/database@^10.5.1":
+  version "10.5.1"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/database/-/database-10.5.1.tgz#f5f9453c5c3db692f1d963766cd04645aad30a9a"
+  integrity sha512-jhBUbunCO2HoXPO1mom214A9wdtjLfhNgcaN9Z3x3TmObGZNm7xQ9FYINAXqKmb1iLMMZxlmR0CBD/2uUv3Chw==
 
 "@react-native-firebase/firestore@^10.4.0":
   version "10.4.0"
@@ -2638,15 +2638,15 @@ escape-html@~1.0.3:
   resolved "https://registry.yarnpkg.com/escape-html/-/escape-html-1.0.3.tgz#0258eae4d3d0c0974de1c169188ef0051d1d1988"
   integrity sha1-Aljq5NPQwJdN4cFpGI7wBR0dGYg=
 
-escape-string-regexp@2.0.0, escape-string-regexp@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-2.0.0.tgz#a30304e99daa32e23b2fd20f51babd07cffca344"
-  integrity sha512-UpzcLCXolUWcNu5HtVMHYdXJjArjsF9C0aNnquZYY4uW/Vu0miy5YoWvbV345HauVvcAUnpRuhMMcqTcGOY2+w==
-
 escape-string-regexp@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
   integrity sha1-G2HAViGQqN/2rjuyzwIAyhMLhtQ=
+
+escape-string-regexp@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-2.0.0.tgz#a30304e99daa32e23b2fd20f51babd07cffca344"
+  integrity sha512-UpzcLCXolUWcNu5HtVMHYdXJjArjsF9C0aNnquZYY4uW/Vu0miy5YoWvbV345HauVvcAUnpRuhMMcqTcGOY2+w==
 
 escape-string-regexp@^4.0.0:
   version "4.0.0"
@@ -3610,7 +3610,7 @@ internal-slot@^1.0.2:
     has "^1.0.3"
     side-channel "^1.0.2"
 
-invariant@2.2.4, invariant@^2.2.4:
+invariant@^2.2.4:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
   integrity sha512-phJfQVBuaJM5raOpJjSfkiD6BpbCE4Ns//LaXl6wGYtUBY83nWS6Rf9tXm2e8VaK60JEjYldbPif/A2B1C2gNA==
@@ -5866,11 +5866,6 @@ react-native-chart-kit@^6.10.0:
     paths-js "^0.4.10"
     point-in-polygon "^1.0.1"
 
-react-native-fbsdk@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/react-native-fbsdk/-/react-native-fbsdk-3.0.0.tgz#07ef41758bb17a0acaff744008af625a45ef9a01"
-  integrity sha512-i0JocuzLlGk13J0xFDjm8GlX7SADAL2kh/syE/HOn5HHdW+PFjC31MNj5AtzIw2TicHXpHGO6VPKNfdWFbxboA==
-
 react-native-gesture-handler@^1.9.0:
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.9.0.tgz#e441b1c0277c3fd4ca3e5c58fdd681e2f0ceddf0"
@@ -5881,11 +5876,6 @@ react-native-gesture-handler@^1.9.0:
     hoist-non-react-statics "^3.3.0"
     invariant "^2.2.4"
     prop-types "^15.7.2"
-
-react-native-google-signin@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/react-native-google-signin/-/react-native-google-signin-2.1.1.tgz#4281940eee88602b0181dd49affdf8c92980c85c"
-  integrity sha512-6l3fiLdX/bfhh0BoxGq+jGkagFsO+mrE/eRV4+3/0k8+FDxO90vdPpQdDiwlM5vWXRxWthTzMM09/jHw+4cvNw==
 
 react-native-iphone-x-helper@^1.3.0:
   version "1.3.1"
@@ -5934,14 +5924,6 @@ react-native-vector-icons@^7.1.0:
     lodash.template "^4.5.0"
     prop-types "^15.7.2"
     yargs "^15.0.2"
-
-react-native-webview@^11.0.3:
-  version "11.0.3"
-  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-11.0.3.tgz#7235ee46d3df30443734bd5e5ba3c28588413e83"
-  integrity sha512-or0MP5JthBGXX1/MNePdR7NC0LJXtr1F0yb0wrvEZ0iqSl1xh4yJ4s225qpkPdq3m8bDWMUpM0FGKad26rddOg==
-  dependencies:
-    escape-string-regexp "2.0.0"
-    invariant "2.2.4"
 
 react-native@^0.63.4:
   version "0.63.4"
