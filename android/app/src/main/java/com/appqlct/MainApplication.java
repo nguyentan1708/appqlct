@@ -14,8 +14,9 @@ import com.facebook.soloader.SoLoader;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import androidx.multidex.MultiDexApplication; // <-- ADD THIS IMPORT
-// import co.apptailor.googlesignin.RNGoogleSigninPackage;  // <--- import
-
+import co.apptailor.googlesignin.RNGoogleSigninPackage;  // <--- import
+// import io.invertase.firebase.messaging.RNFirebaseMessagingPackage;//<- Dòng này
+// import io.invertase.firebase.notifications.RNFirebaseNotificationsPackage;//<- Dòng này
 public class MainApplication extends MultiDexApplication implements ReactApplication{
 
   private final ReactNativeHost mReactNativeHost =
@@ -34,8 +35,10 @@ public class MainApplication extends MultiDexApplication implements ReactApplica
           new VectorIconsPackage();
           new RNCPickerPackage();
           // new AsyncStoragePackage();
-          // new RNGoogleSigninPackage();
+          new RNGoogleSigninPackage();
           // new FBSDKPackage();
+          // new RNFirebaseMessagingPackage();
+          // new RNFirebaseNotificationsPackage();
           return packages;
         }
 

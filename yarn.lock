@@ -1182,10 +1182,20 @@
   resolved "https://registry.yarnpkg.com/@react-native-firebase/firestore/-/firestore-10.4.0.tgz#83d7bb13404d4266f2cad6bf5a0ad889805bd608"
   integrity sha512-y9F2mJVfbLUDxGZ/HdmY95wDuHNJb7aGcFSb8HuJaXNWXrF28ebeI1AhAM4FICWGunrzYIDl7UXYyeONl+aitg==
 
+"@react-native-firebase/messaging@^10.5.1":
+  version "10.5.1"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/messaging/-/messaging-10.5.1.tgz#f4b833f6ff6a7c234e790bae1f01289ac08199d8"
+  integrity sha512-cpx87M3vaR34vUYEFdpsFQk0/A29225tD5lqqvKW+l/u8FHD9KHyjm+XoEenV2eCayF8IxkmO9PQKsufgg4FHQ==
+
 "@react-native-firebase/storage@^10.4.0":
   version "10.4.0"
   resolved "https://registry.yarnpkg.com/@react-native-firebase/storage/-/storage-10.4.0.tgz#b56d62050b8f172bac8e89d554af45f24e532855"
   integrity sha512-kVQotHz5Sy0YQJkdghZ4zD0FaIh8JgkdW51wvQZ35xqDb1tckHJvjCXC1ImRl2jy4OFQ2UBaMsGOOjYcT8m2dA==
+
+"@react-native-picker/picker@^1.9.10":
+  version "1.9.10"
+  resolved "https://registry.yarnpkg.com/@react-native-picker/picker/-/picker-1.9.10.tgz#c0d445453e91077cc85a3f0a6d0074d44d21e438"
+  integrity sha512-g0C0RLjXXGE4UfmGxNtAOY3LE5Epz8+ck/rB1oErJowskIIG83U6LVqH9oFrx1Hq1k/lbVQGgabURlE0QQ1MHA==
 
 "@react-navigation/bottom-tabs@^5.11.2":
   version "5.11.2"

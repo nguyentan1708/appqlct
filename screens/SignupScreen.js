@@ -1,5 +1,5 @@
 import React, {useContext, useState} from 'react';
-import {View, Text, TouchableOpacity, Platform, StyleSheet} from 'react-native';
+import {View, Text, TouchableOpacity, Platform, StyleSheet,Image} from 'react-native';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 import SocialButton from '../components/SocialButton';
@@ -42,6 +42,8 @@ function SignupScreen({navigation}) {
 
   return (
     <View style={styles.container}>
+      <Image source={require('../assets/piggy-bank.png')} style={styles.logo} />
+      
       <Text style={styles.text}>Tạo tài khoản mới</Text>
 
       <FormInput
@@ -126,6 +128,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 20,
   },
+  logo: {
+    height: 150,
+    width: 150,
+    resizeMode: 'cover',
+  },
+
   text: {
     fontFamily: 'Kufam-SemiBoldItalic',
     fontSize: 28,

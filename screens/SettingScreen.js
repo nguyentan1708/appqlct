@@ -10,6 +10,7 @@ import MoneyFixed from './MoneyFixed';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AddFixed from './AddFixed';
+import {Messaging,requestUserPermission} from './Messaging';
 // import {NavigationContainer} from '@react-navigation/native';
 function Main({navigation}) {
   function logout() {
@@ -38,6 +39,9 @@ function Main({navigation}) {
       <FormSetting 
       title="Đăng xuất" 
       onPress={logout} />
+      <FormSetting 
+      title="Thông báo nhắc nhở" 
+      onPress={() => requestUserPermission()} />
     </View>
   );
 }

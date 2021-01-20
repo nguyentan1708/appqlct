@@ -15,7 +15,42 @@ import auth from '@react-native-firebase/auth';
 // import { GoogleSignin, statusCodes } from '@react-native-community/google-signin';
 // import {AuthContext} from '../navigation/AuthProvider';
 // import { LoginManager, AccessToken } from 'react-native-fbsdk';
+import ForgotPass from './ForgotPass';
+import {
+  GoogleSignin,
+  GoogleSigninButton,
+  statusCodes,
+} from '@react-native-community/google-signin';
 
+GoogleSignin.configure({
+  webClientId: '831035125150-5m07aevhjikps5j5kta4pnbngphqovse.apps.googleusercontent.com',
+});
+function GoogleSignIn() {
+  return (
+    <Button
+      title="Google Sign-In"
+      onPress={() => onGoogleButtonPress().then(() => console.log('Signed in with Google!'))}
+    />
+  );
+}
+
+signIn = async () => {
+  try {
+    await GoogleSignin.hasPlayServices();
+    const userInfo = await GoogleSignin.signIn();
+    this.setState({ userInfo });
+  } catch (error) {
+    if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+      // user cancelled the login flow
+    } else if (error.code === statusCodes.IN_PROGRESS) {
+      // operation (e.g. sign in) is in progress already
+    } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+      // play services not available or outdated
+    } else {
+      // some other error happened
+    }
+  }
+};
 function LoginScreen({navigation}) {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -79,7 +114,7 @@ function LoginScreen({navigation}) {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Image source={require('../assets/piggy-bank.png')} style={styles.logo} />
-      <Text style={styles.text}>RN Social App</Text>
+      <Text style={styles.text}>Quản lý chi tiêu</Text>
 
       <FormInput
         labelValue={email}
@@ -100,11 +135,11 @@ function LoginScreen({navigation}) {
       />
 
       <FormButton
-        buttonTitle="Sign In"
+        buttonTitle="Đăng nhập"
         onPress={() => login(email, password)}
       />
 
-      <TouchableOpacity style={styles.forgotButton} onPress={() => {}}>
+      <TouchableOpacity style={styles.forgotButton} onPress={() => navigation.navigate("Forgot")}>
         <Text style={styles.navButtonText}>Quên mật khẩu?</Text>
       </TouchableOpacity>
 
@@ -123,7 +158,7 @@ function LoginScreen({navigation}) {
             btnType="google"
             color="#de4d41"
             backgroundColor="#f5e7ea"
-            onPress={() => {}}
+            onPress={() => {signIn()}}
           />
         </View>
       ) : null}
