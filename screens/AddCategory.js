@@ -18,7 +18,7 @@ import {
 } from 'react-native-gesture-handler';
 import database from '@react-native-firebase/database';
 import {firebase, auth} from '@react-native-firebase/auth';
-
+import FormInput from '../components/FormInput';
 export default function AddCategory({navigation}) {
   const [name, setName] = useState('');
   const [icon, setIcon] = useState('');
@@ -312,28 +312,34 @@ export default function AddCategory({navigation}) {
   //     />
   //   );
   // };
-  function pushData({name,icon,color}) {
-    database().ref('/category').push().set({
-      name:name,
-      icon:icon,
-      color:color
-    }).then((result)=>alert(
-      'Alert Title',
-      'My Alert Msg',
-      [
-        {
-          text: 'Ask me later',
-          onPress: () => console.log('Ask me later pressed')
-        },
-        {
-          text: 'Cancel',
-          onPress: () => console.log('Cancel Pressed'),
-          style: 'cancel'
-        },
-        { text: 'OK', onPress: () => console.log('OK Pressed') }
-      ],
-      { cancelable: false }
-    ))
+  function pushData({name, icon, color}) {
+    database()
+      .ref('/category')
+      .push()
+      .set({
+        name: name,
+        icon: icon,
+        color: color,
+      })
+      .then((result) =>
+        alert(
+          'Alert Title',
+          'My Alert Msg',
+          [
+            {
+              text: 'Ask me later',
+              onPress: () => console.log('Ask me later pressed'),
+            },
+            {
+              text: 'Cancel',
+              onPress: () => console.log('Cancel Pressed'),
+              style: 'cancel',
+            },
+            {text: 'OK', onPress: () => console.log('OK Pressed')},
+          ],
+          {cancelable: false},
+        ),
+      );
   }
   // useEffect(() => {
   //   const onValueChange = database()
@@ -351,37 +357,46 @@ export default function AddCategory({navigation}) {
   return (
     <View style={styles.container}>
       <View styte={styles.containerInput}>
-        <Text style={styles.textInput}>Tên</Text>
+        <FormInput
+          labelValue={name}
+          onChangeText={(name) => setName(name)}
+          placeholderText="Nhập tên danh mục"
+          iconType="add-circle-outline"
+          autoCapitalize="none"
+          autoCorrect={false}
+        />
+        {/* <Text style={styles.textInput}>Tên</Text>
         <TextInput
           value={name}
           style={styles.inputField}
           placeholder="Tên danh mục"
           onChangeText={(name) => setName(name)}
           placeholderTextColor="black"
-        />
+        /> */}
       </View>
       <View style={styles.containerIcon}>
-        <Text style={styles.textIcon}>Biểu tượng</Text>
+        <Text style={styles.text}>Biểu tượng</Text>
         <FlatList
           data={ICON}
           numColumns="4"
           keyExtractor={(item) => item.id}
           renderItem={({item}) => (
-            <View style={styles.iconItemWrap}>
-              <ScrollView style={styles.category}>
+            <View style={styles.iconItem}>
+              <ScrollView style={styles.iconScrollView}>
                 <TouchableOpacity
-                  style={styles.icon}
-                  onPress={() => {setIcon(item.icon)}}>
+                  style={styles.iconButton}
+                  onPress={() => {
+                    setIcon(item.icon);
+                  }}>
                   <Ionicons
                     name={item.icon}
                     color={color}
-                    style={styles.itemIcon}
+                    style={styles.itemIonicons}
                   />
                 </TouchableOpacity>
               </ScrollView>
             </View>
           )}
-          extraData={icon}
         />
       </View>
       <View style={styles.containerColor}>
@@ -391,9 +406,11 @@ export default function AddCategory({navigation}) {
           numColumns="4"
           keyExtractor={(item) => item.id}
           renderItem={({item}) => (
-            <View style={styles.categoryItem}>
-              <ScrollView style={styles.color}>
-                <TouchableOpacity onPress={() => setColor(item.color)}>
+            <View style={styles.colorItem}>
+              <ScrollView style={styles.colorScrollView}>
+                <TouchableOpacity
+                  style={styles.colorButton}
+                  onPress={() => setColor(item.color)}>
                   <View
                     backgroundColor={item.color}
                     style={styles.itemColor}></View>
@@ -401,80 +418,115 @@ export default function AddCategory({navigation}) {
               </ScrollView>
             </View>
           )}
-          style={styles.categoryWrap}
         />
       </View>
       <View style={styles.containerButton}>
-        <TouchableOpacity
+        {/* <TouchableOpacity
           style={styles.textButtonWrap}
           onPress={() => pushData()}>
           <Text style={styles.textButton}>Lưu</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
+        <FormButton buttonTitle="Lưu" onPress={() => pushData()} />
       </View>
     </View>
   );
 }
 const styles = StyleSheet.create({
+  //style container bao bọc
   container: {
     flex: 1,
     margin: 5,
   },
+  text: {
+    fontSize: 20,
+  },
+
+//style phần nhập dữ mục
   containerInput: {
-    flex: 2,
-    borderWidth: 2,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    borderWidth: 3,
     borderColor: 'black',
   },
-  textInput: {},
-  inputField: {},
-  text: {},
+
+  // style phần view biểu tượng
   containerIcon: {
     flex: 4,
-    borderWidth: 2,
-    borderColor: 'black',
+    justifyContent: 'center',
+    borderTopWidth: 3,
+    borderBottomWidth: 3,
+    borderColor: '#DADADA',
   },
-  containerColor: {
-    flex: 4,
-    borderWidth: 2,
-    borderColor: 'black',
-  },
-  categoryWrapper: {
-    margin: 20,
-  },
-  textCategory: {},
-  categoryItem: {
+  iconItem: {
     flex: 1,
-    flexDirection: 'row',
-    backgroundColor: '#f8f8ff',
+    borderTopWidth: 3,
+    borderBottomWidth: 3,
+    borderColor: '#DADADA',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  category: {
+  iconScrollView: {
     flex: 1,
     flexDirection: 'column',
     margin: 20,
     padding: 10,
     borderWidth: 2,
-    borderRadius: 10,
+    borderRadius: 15,
     borderColor: '#dcdcdc',
     backgroundColor: '#fffaf0',
   },
-  itemIcon: {
-    fontSize: 24,
+  itemIonicons: {
+    fontSize: 33,
     color: 'pink',
   },
-  itemColor: {
-    margin: 20,
-    borderRadius: 50,
-    height: 40,
-    width: 40,
+
+
+  //styles màu khảc
+  containerColor: {
+    flex: 4,
+    justifyContent: 'center',
+    borderTopWidth: 3,
+    borderBottomWidth: 3,
+    borderColor: '#DADADA',
+    marginTop: 5,
   },
-  text: {
-    fontSize: 20,
-  },
-  iconItemWrap: {
+  colorItem: {
     flex: 1,
+    borderTopWidth: 3,
+    borderBottomWidth: 3,
+    borderColor: '#DADADA',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
+  colorWrap: {
+    flex: 1,
+    borderTopWidth: 3,
+    borderBottomWidth: 3,
+    borderColor: '#DADADA',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderTopWidth: 3,
+    borderBottomWidth: 3,
+    borderColor: '#DADADA',
+  },
+  colorScrollView: {
+    flex: 1,
+    flexDirection: 'column',
+    margin: 20,
+    padding: 10,
+    borderWidth: 2,
+    borderRadius: 15,
+    borderColor: '#dcdcdc',
+    backgroundColor: '#fffaf0',
+  },
+  itemColor: {
+  
+  },
+
+
   containerButton: {
     flex: 1,
-    backgroundColor: 'lightskyblue',
     alignItems: 'center',
     alignContent: 'center',
     borderRadius: 10,
