@@ -1,5 +1,5 @@
 import React, {useContext, useState} from 'react';
-import {View, Text, TouchableOpacity, Platform, StyleSheet,Image} from 'react-native';
+import {View, Text, TouchableOpacity, Platform, StyleSheet,Image,ScrollView} from 'react-native';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 import SocialButton from '../components/SocialButton';
@@ -41,7 +41,7 @@ function SignupScreen({navigation}) {
   }
 
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <Image source={require('../assets/piggy-bank.png')} style={styles.logo} />
       
       <Text style={styles.text}>Tạo tài khoản mới</Text>
@@ -74,21 +74,6 @@ function SignupScreen({navigation}) {
 
       <FormButton buttonTitle="Đăng ký" onPress={() => signup()} />
 
-      <View style={styles.textPrivate}>
-        <Text style={styles.color_textPrivate}>
-          By registering, you confirm that you accept our{' '}
-        </Text>
-        <TouchableOpacity onPress={() => alert('Terms Clicked!')}>
-          <Text style={[styles.color_textPrivate, {color: '#e88832'}]}>
-            Terms of service
-          </Text>
-        </TouchableOpacity>
-        <Text style={styles.color_textPrivate}> and </Text>
-        <Text style={[styles.color_textPrivate, {color: '#e88832'}]}>
-          Privacy Policy
-        </Text>
-      </View>
-
       {Platform.OS === 'android' ? (
         <View>
           <SocialButton
@@ -114,26 +99,65 @@ function SignupScreen({navigation}) {
         onPress={() => navigation.navigate('Login')}>
         <Text style={styles.navButtonText}>Đã có tài khoản? Đăng nhập</Text>
       </TouchableOpacity>
-    </View>
+    </ScrollView>
   );
 }
 
 export default SignupScreen;
 
 const styles = StyleSheet.create({
+  // container: {
+  //   backgroundColor: '#f9fafd',
+  //   flex: 1,
+  //   justifyContent: 'center',
+  //   alignItems: 'center',
+  //   padding: 20,
+  // },
+  // logo: {
+  //   height: 150,
+  //   width: 150,
+  //   resizeMode: 'cover',
+  // },
+
+  // text: {
+  //   fontFamily: 'Kufam-SemiBoldItalic',
+  //   fontSize: 28,
+  //   marginBottom: 10,
+  //   color: '#051d5f',
+  // },
+  // navButton: {
+  //   marginTop: 15,
+  // },
+  // navButtonText: {
+  //   fontSize: 18,
+  //   fontWeight: '500',
+  //   color: '#2e64e5',
+  //   fontFamily: 'Lato-Regular',
+  // },
+  // textPrivate: {
+  //   flexDirection: 'row',
+  //   flexWrap: 'wrap',
+  //   marginVertical: 35,
+  //   justifyContent: 'center',
+  // },
+  // color_textPrivate: {
+  //   fontSize: 13,
+  //   fontWeight: '400',
+  //   fontFamily: 'Lato-Regular',
+  //   color: 'grey',
+  // },
+
   container: {
-    backgroundColor: '#f9fafd',
-    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
+    paddingTop: 50,
   },
   logo: {
     height: 150,
     width: 150,
     resizeMode: 'cover',
   },
-
   text: {
     fontFamily: 'Kufam-SemiBoldItalic',
     fontSize: 28,
@@ -143,22 +167,13 @@ const styles = StyleSheet.create({
   navButton: {
     marginTop: 15,
   },
+  forgotButton: {
+    marginVertical: 35,
+  },
   navButtonText: {
     fontSize: 18,
     fontWeight: '500',
     color: '#2e64e5',
     fontFamily: 'Lato-Regular',
-  },
-  textPrivate: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    marginVertical: 35,
-    justifyContent: 'center',
-  },
-  color_textPrivate: {
-    fontSize: 13,
-    fontWeight: '400',
-    fontFamily: 'Lato-Regular',
-    color: 'grey',
   },
 });
