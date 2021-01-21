@@ -7,6 +7,7 @@ import {
   Platform,
   StyleSheet,
   ScrollView,
+  Alert,
 } from 'react-native';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
@@ -55,21 +56,37 @@ function LoginScreen({navigation}) {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   function login() {
-    auth()
-      .signInWithEmailAndPassword(email, password)
-      .then(() => {
-        console.log('User account created & signed in!');
-      })
-      .catch((error) => {
-        if (error.code === 'auth/email-already-in-use') {
-          console.log('That email address is already in use!');
-        }
+    if ((email == null) || (password==null) ){
+      Alert.alert(
+        'Đăng nhập',
+        'Vui lòng không để trống email và password!',
+        [
+          {
+            text: 'Cancel',
+            onPress:()=>navigation.navigate('Login'),
+            style: 'cancel',
+          },
+          {text: 'OK', onPress:()=>navigation.navigate('Login')},
+        ],
+        {cancelable: false},
+      );
+    } else {
+      auth()
+        .signInWithEmailAndPassword(email, password)
+        .then(() => {
+          console.log('User account created & signed in!');
+        })
+        .catch((error) => {
+          if (error.code === 'auth/email-already-in-use') {
+            console.log('That email address is already in use!');
+          }
 
-        if (error.code === 'auth/invalid-email') {
-          console.log('That email address is invalid!');
-        }
-        console.error(error);
-      });
+          if (error.code === 'auth/invalid-email') {
+            console.log('That email address is invalid!');
+          }
+          console.error(error);
+        });
+    }
   }
   // const {user} = useContext(AuthContext);
   // async function onFacebookButtonPress() {

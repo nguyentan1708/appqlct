@@ -1,5 +1,5 @@
 import React, {useContext, useState} from 'react';
-import {View, Text, TouchableOpacity, Platform, StyleSheet,Image,ScrollView} from 'react-native';
+import {View, Text, TouchableOpacity, Platform, StyleSheet,Image,ScrollView,Alert} from 'react-native';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 import SocialButton from '../components/SocialButton';
@@ -9,35 +9,70 @@ function SignupScreen({navigation}) {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [confirmPassword, setConfirmPassword] = useState();
+  function confirmPass(){
+    if(password!=confirmPassword){
+      Alert.alert(
+        'Đăng ký',
+        'Mật khẩu xác nhận không trùng với mật khẩu đã nhập!',
+        [
+          {
+            text: 'Cancel',
+            onPress:()=>navigation.navigate('Signup'),
+            style: 'cancel',
+          },
+          {text: 'OK', onPress:()=>navigation.navigate('Signup')},
+        ],
+        {cancelable: false},
+      );
+    } else signup();
+  }
+  
+  // Hàm đăng ký
   function signup() {
-    auth()
-      .createUserWithEmailAndPassword(email, password)
-      .then(() =>
-        Alert.alert(
-          'Alert Title',
-          'My Alert Msg',
-          [
-            {
-              text: 'Cancel',
-              onPress: () => console.log('Cancel Pressed'),
-              style: 'cancel',
-            },
-            {text: 'OK', onPress: () => console.log('OK Pressed')},
-          ],
-          {cancelable: false},
-        ),
-      )
-      .catch((error) => {
-        if (error.code === 'auth/email-already-in-use') {
-          console.log('That email address is already in use!');
-        }
+    if (password != confirmPassword) {
+      Alert.alert(
+        'Đăng ký',
+        'Mật khẩu xác nhận không trùng với mật khẩu đã nhập!',
+        [
+          {
+            text: 'Cancel',
+            onPress: () => navigation.navigate('Signup'),
+            style: 'cancel',
+          },
+          {text: 'OK', onPress: () => navigation.navigate('Signup')},
+        ],
+        {cancelable: false},
+      );
+    } else {
+      auth()
+        .createUserWithEmailAndPassword(email, password)
+        .then(() =>
+          Alert.alert(
+            'Đăng ký',
+            'Đăng ký tài khoản thành công! Vui lòng quay lại đăng nhập!',
+            [
+              {
+                text: 'Cancel',
+                onPress: () => navigation.navigate('Signup'),
+                style: 'cancel',
+              },
+              {text: 'OK', onPress: () => navigation.navigate('Login')},
+            ],
+            {cancelable: false},
+          ),
+        )
+        .catch((error) => {
+          if (error.code === 'auth/email-already-in-use') {
+            console.log('That email address is already in use!');
+          }
 
-        if (error.code === 'auth/invalid-email') {
-          console.log('That email address is invalid!');
-        }
+          if (error.code === 'auth/invalid-email') {
+            console.log('That email address is invalid!');
+          }
 
-        console.error(error);
-      });
+          console.error(error);
+        });
+    }
   }
 
   return (
